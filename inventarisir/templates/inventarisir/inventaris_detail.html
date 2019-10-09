@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+    <h4>Details For <em style="text-transform: capitalize">"{{ inventaris.barang.nama }}"</em></h4>
+    <div class="container mt-4">
+        <p>Barang : <strong> {{ inventaris.barang.nama }} </strong>
+            belongs to
+            <strong> {{ inventaris.karyawan.nama }} </strong> </p>
+    </div>
+
+{% endblock content %}

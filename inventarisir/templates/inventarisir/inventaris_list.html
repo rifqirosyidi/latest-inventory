@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+    <h3>Inventaris Menu</h3>
+    <a href="/inventaris/new" class="btn btn-success">Create</a>
+    <a href="/inventaris/report" class="btn btn-primary float-right">Print</a>
+    <br><br>
+    <p>List Inventaris</p>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama Barang</th>
+            <th scope="col">Nama Karyawan</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for inventaris in list_inventaris %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{% url 'barang-detail' inventaris.barang.id %}">{{ inventaris.barang.nama }}</a></td>
+            <td>{{ inventaris.karyawan.nama }}</td>
+            <td>
+                <a href="{% url 'inventaris-update' inventaris.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'inventaris-delete' inventaris.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

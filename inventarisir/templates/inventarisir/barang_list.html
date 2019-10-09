@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+    <h3>Barang Menu</h3>
+    <a href="/barang/new" class="btn btn-success">Create</a>
+    <br><br>
+    <p>List Barang</p>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kode Barang</th>
+            <th scope="col">Nama Barang</th>
+            <th scope="col">Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for barang in list_barang %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ barang.kode }}</td>
+            <td><a href="{% url 'barang-detail' barang.id %}">{{ barang.nama }}</a></td>
+            <td>
+                <a href="{% url 'barang-update' barang.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'barang-delete' barang.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

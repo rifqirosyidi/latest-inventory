@@ -1,0 +1,9 @@
+.custom-login-css {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #343a40;
+    color: white;
+    box-shadow: 0px 0px 5px black;
+    margin-top: 60px;
+}

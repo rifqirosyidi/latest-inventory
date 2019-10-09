@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+    <h3>Karyawan Menu</h3>
+    <a href="/karyawan/new" class="btn btn-success">Create</a>
+    <br><br>
+    <p>List Karyawan</p>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama Karyawan</th>
+            <th scope="col">No Handphone</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for karyawan in list_karyawan %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{% url 'karyawan-detail' karyawan.id %}">{{ karyawan.nama }}</a></td>
+            <td>{{ karyawan.nomor_handphone }}</td>
+            <td>
+                <a href="{% url 'karyawan-update' karyawan.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'karyawan-delete' karyawan.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
